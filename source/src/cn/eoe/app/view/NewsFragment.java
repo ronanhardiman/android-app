@@ -1,12 +1,7 @@
 package cn.eoe.app.view;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.codehaus.jackson.JsonParseException;
-import org.codehaus.jackson.map.JsonMappingException;
-import org.codehaus.jackson.type.TypeReference;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -26,7 +21,6 @@ import cn.eoe.app.biz.NewsDao;
 import cn.eoe.app.entity.NewsCategoryListEntity;
 import cn.eoe.app.entity.NewsContentItem;
 import cn.eoe.app.entity.NewsMoreResponse;
-import cn.eoe.app.https.HttpUtils;
 import cn.eoe.app.utils.ImageUtil;
 
 @SuppressLint("NewApi")
@@ -55,6 +49,15 @@ public class NewsFragment extends BaseListFragment {
 
 	};
 
+	// add this constructor by King0769, 2013/5/7
+	// in order to solve an exception that "can't instantiate class cn.eoe.app.view.NewsFragment; no empty constructor"
+	// I found it in this case : 1.open eoe program -> 2.change system language -> 3.reopen eoe, can see FC(force close)
+	// I think this bug will happens in many cases.
+	public NewsFragment() {
+		
+	}
+	//--------------------
+	
 	public NewsFragment(Activity c, NewsCategoryListEntity categorys) {
 		this.mActivity = c;
 
